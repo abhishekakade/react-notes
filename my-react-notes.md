@@ -1,4 +1,4 @@
-# Codecademy React Notes -
+# React Notes -
 
 - Names like `onClick`, `onHover` only create event listeners if they're used on HTML-like JSX elements. Otherwise, they're just ordinary prop names as they are inside of a component instance (and NOT HTML-like JSX element).
 
