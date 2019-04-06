@@ -6,7 +6,25 @@
 
 - Any time that you call `this.setState()`, `this.setState()` AUTOMATICALLY calls `.render()` as soon as the state has changed. Think of `this.setState()` as actually being two things: `this.setState()`, immediately followed by `.render()`. That is why you can’t call `this.setState()` from inside of the `.render()` method! `this.setState()` automatically calls `.render()`. If `.render()` calls `this.setState()`, then an infinite loop is created.
 
-## React Lifecycles -
+## React Lifecycle Methods -
+
+### constructor(props) -
+
+**If you don’t initialize state and you don’t bind methods, you don’t need to implement a constructor** for your React component. The `constructor` for a React component is called before it is mounted. When implementing the constructor for a **`React.Component` subclass**, you should call **`super(props)`** before any other statement. Otherwise, **`this.props` will be undefined** in the constructor, which can lead to bugs.
+
+Typically, in React constructors are only used for two purposes:
+
+- Initializing local state by assigning an object to `this.state`.
+- Binding event handler methods to an instance.
+
+You **should not call `setState()` in the `constructor()`**. **Instead**, if your component needs to use local state, **assign the initial state to `this.state` directly in the constructor**:
+
+    constructor(props) {
+      super(props);
+      // Don't call this.setState() here!
+      this.state = { counter: 0 };
+      this.handleClick = this.handleClick.bind(this);
+    }
 
 ### componentWillMount -
 
